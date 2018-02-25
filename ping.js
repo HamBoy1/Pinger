@@ -1,19 +1,16 @@
 const request = require('request');
 
-var status= "";
+var status= new String('');
 
-ping = function() {
-  request({
-    url: 'https://api.myjson.com/bins/17pan5',
-    json: true
-  }, (error, response, body) => {
+function ping(){
+  request('http://www.google.com', function (error, response) {
     if(error){
-      status = 'down';
-    }else if (body.status === 'OK') {
-      status = 'up';
+      status="down";
+    } else {
+      status="up";
     }
+    console.log(status);
   });
-  return status;
-};
+}
 
 module.exports = {ping}
